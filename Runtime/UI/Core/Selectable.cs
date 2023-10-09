@@ -373,7 +373,7 @@ namespace UnityEngine.UI
 
         private bool             isPointerInside   { get; set; }
         private bool             isPointerDown     { get; set; }
-        private bool             hasSelection      { get; set; }
+        internal bool             hasSelection      { get; set; }
 
         protected Selectable()
         {}
@@ -606,6 +606,7 @@ namespace UnityEngine.UI
 
 #endif // if UNITY_EDITOR
 
+        public SelectionState GetCurrentSelectionState() => currentSelectionState;
         protected SelectionState currentSelectionState
         {
             get
@@ -647,6 +648,11 @@ namespace UnityEngine.UI
             }
         }
 
+        internal void DoStateTransition2(SelectionState state, bool instant)
+        {
+            DoStateTransition(state, instant);
+        }
+        
         /// <summary>
         /// Transition the Selectable to the entered state.
         /// </summary>
@@ -712,7 +718,7 @@ namespace UnityEngine.UI
         /// <summary>
         /// An enumeration of selected states of objects
         /// </summary>
-        protected enum SelectionState
+        public enum SelectionState
         {
             /// <summary>
             /// The UI object can be selected.

@@ -223,6 +223,8 @@ namespace UnityEngine.UI
         [NonSerialized]
         private readonly TweenRunner<ColorTween> m_ColorTweenRunner;
 
+        public UnityEvent OnColorTween = new UnityEvent();
+
         protected bool useLegacyMeshGeneration { get; set; }
 
         // Called by Unity prior to deserialization,
@@ -231,7 +233,7 @@ namespace UnityEngine.UI
         {
             if (m_ColorTweenRunner == null)
                 m_ColorTweenRunner = new TweenRunner<ColorTween>();
-            m_ColorTweenRunner.Init(this);
+            m_ColorTweenRunner.Init(this, OnColorTween);
             useLegacyMeshGeneration = true;
         }
 

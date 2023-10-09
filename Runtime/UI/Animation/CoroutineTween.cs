@@ -1,4 +1,5 @@
 using System.Collections;
+using JetBrains.Annotations;
 using UnityEngine.Events;
 
 namespace UnityEngine.UI.CoroutineTween
@@ -189,9 +190,11 @@ namespace UnityEngine.UI.CoroutineTween
     {
         protected MonoBehaviour m_CoroutineContainer;
         protected IEnumerator m_Tween;
-
+        [CanBeNull] 
+        protected UnityEvent m_OnColorTween;
+        
         // utility function for starting the tween
-        private static IEnumerator Start(T tweenInfo)
+        private IEnumerator Start(T tweenInfo)
         {
             if (!tweenInfo.ValidTarget())
                 yield break;
@@ -203,13 +206,15 @@ namespace UnityEngine.UI.CoroutineTween
                 var percentage = Mathf.Clamp01(elapsedTime / tweenInfo.duration);
                 tweenInfo.TweenValue(percentage);
                 yield return null;
+                m_OnColorTween?.Invoke();
             }
             tweenInfo.TweenValue(1.0f);
         }
 
-        public void Init(MonoBehaviour coroutineContainer)
+        public void Init(MonoBehaviour coroutineContainer, UnityEvent onColorTween)
         {
             m_CoroutineContainer = coroutineContainer;
+            m_OnColorTween = onColorTween;
         }
 
         public void StartTween(T info)
@@ -230,12 +235,14 @@ namespace UnityEngine.UI.CoroutineTween
 
             m_Tween = Start(info);
             m_CoroutineContainer.StartCoroutine(m_Tween);
+            m_OnColorTween?.Invoke();
         }
 
         public void StopTween()
         {
             if (m_Tween != null)
             {
+                m_OnColorTween?.Invoke();
                 m_CoroutineContainer.StopCoroutine(m_Tween);
                 m_Tween = null;
             }
