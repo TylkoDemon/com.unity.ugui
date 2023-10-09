@@ -1,0 +1,103 @@
+# Build results
+[Dd]ebug/*
+[Dd]ebugPublic/*
+[Rr]elease/*
+[Rr]eleases/*
+x64/*
+x86/*
+bld/*
+[Bb]in/*
+[Oo]bj/*
+[Ll]og/*
+[Dd]eploy/*
+
+[Ss]teamworksSDK/*
+!JEM/Building/Build/*
+
+# Visual Studio 2015 cache/options directory
+.vs/*
+
+# Rider cache/options directory
+.idea/*
+
+# unity
+/Library/*
+/Temp/*
+/Build/*
+/BuildRelease/*
+[Uu]serSettings/*
+[Mm]emoryCaptures/*
+[Rr]ecordings/*
+[Ss]creenshots/*
+
+# game
+/Logs/*
+/Config/*
+/Mono/*
+/Save/*
+/PlayerStorage/*
+/Panorama/*
+
+/JEM/Volumes/Exported/*
+/JEM/Levels/Exported/*
+/JEM/Collection/Exported/*
+Assets/StreamingAssets/*
+Assets/StreamingAssets.meta
+!Assets/StreamingAssets/server_discovery_masters.json
+!Assets/StreamingAssets/server_discovery_masters.json.meta
+!Assets/StreamingAssets/link_hosts.json
+!Assets/StreamingAssets/link_hosts.json.meta
+
+/JEM/Collection/Exported/*
+GoogleDataProvider/localization/*
+GoogleDataProvider/Logs/*
+
+# EXT
+*.csproj
+*.sln
+*.validationcache
+*.wsettings
+
+# FMOD
+# Never ignore DLLs in the FMOD subfolder.
+!/[Aa]ssets/Plugins/FMOD/**/lib/*
+
+# Don't ignore images and gizmos used by FMOD in the Unity Editor.
+!/[Aa]ssets/Gizmos/FMOD/*
+!/[Aa]ssets/Editor Default Resources/FMOD/*
+                    
+# Ignore the Cache folder since it is updated locally.
+/[Aa]ssets/Plugins/FMOD/Cache/*
+Assets/Plugins/FMOD/Cache/
+           
+# Ignore bank files in the StreamingAssets folder.
+/[Aa]ssets/StreamingAssets/**/*.bank
+/[Aa]ssets/StreamingAssets/**/*.bank.meta
+                    
+# If the source bank files are kept outside of the StreamingAssets folder then these can be ignored.
+# Log files can be ignored.
+fmod_editor.log
+
+FMOD/.cache/
+FMOD/.user/
+FMOD/.unsaved/
+FMOD/Metadata/ProfilerSession/
+
+# Addressable Generated
+Assets/AddressableAssetsData/Windows.meta
+Assets/AddressableAssetsData/Windows/
+Assets/AddressableAssetsData/link.xml
+Assets/AddressableAssetsData/link.xml.meta
+Assets/AddressableAssetsData/Android.meta
+Assets/AddressableAssetsData/Android/
+
+!Packages/com.unity.render-pipelines.universal@12.1.7/Runtime/Debug/
+!Packages/com.unity.render-pipelines.universal@12.1.7/ShaderLibrary/Debug/
+!Packages/com.unity.render-pipelines.universal@12.1.7/Shaders/Debug/
+
+# JEM editor
+username.txt
+JEMLOGGER_FATAL.log
+
+# ETC
+imgui.ini
