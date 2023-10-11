@@ -367,9 +367,13 @@ namespace UnityEngine.UI
                     if (!m_Interactable && EventSystem.current != null && EventSystem.current.currentSelectedGameObject == gameObject)
                         EventSystem.current.SetSelectedGameObject(null);
                     OnSetProperty();
+                    
+                    OnInteractableChanged?.Invoke();
                 }
             }
         }
+
+        public event Action OnInteractableChanged;
 
         private bool             isPointerInside   { get; set; }
         private bool             isPointerDown     { get; set; }
