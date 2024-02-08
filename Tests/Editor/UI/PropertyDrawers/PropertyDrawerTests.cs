@@ -52,7 +52,7 @@ public class PropertyDrawerTests
     static PropertyDrawerTestsWindow window;
 
     [OneTimeSetUp]
-    [MenuItem("Tests/Open Property Drawer Test Window")]
+    [MenuItem("Tools/Tests/Open Property Drawer Test Window")]
     public static void OneTimeSetUp() => window = EditorWindow.GetWindow<PropertyDrawerTestsWindow>();
 
     [OneTimeTearDown]
