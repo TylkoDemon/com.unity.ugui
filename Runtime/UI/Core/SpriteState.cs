@@ -10,6 +10,9 @@ namespace UnityEngine.UI
     public struct SpriteState : IEquatable<SpriteState>
     {
         [SerializeField]
+        private Sprite m_NormalSprite;
+        
+        [SerializeField]
         private Sprite m_HighlightedSprite;
 
         [SerializeField]
@@ -22,6 +25,8 @@ namespace UnityEngine.UI
         [SerializeField]
         private Sprite m_DisabledSprite;
 
+        public Sprite normalSprite       { get { return m_NormalSprite; } set { m_NormalSprite = value; } }
+        
         /// <summary>
         /// Highlighted sprite.
         /// </summary>

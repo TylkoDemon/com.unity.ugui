@@ -675,7 +675,7 @@ namespace UnityEngine.UI
             {
                 case SelectionState.Normal:
                     tintColor = m_Colors.normalColor;
-                    transitionSprite = null;
+                    transitionSprite = m_SpriteState.normalSprite;
                     triggerName = m_AnimationTriggers.normalTrigger;
                     break;
                 case SelectionState.Highlighted:

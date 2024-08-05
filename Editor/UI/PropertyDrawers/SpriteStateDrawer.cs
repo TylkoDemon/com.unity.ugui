@@ -11,6 +11,7 @@ namespace UnityEditor.UI
     /// </summary>
     public class SpriteStateDrawer : PropertyDrawer
     {
+        const string kNormalSprite = "m_NormalSprite";
         const string kHighlightedSprite = "m_HighlightedSprite";
         const string kPressedSprite = "m_PressedSprite";
         const string kSelectedSprite = "m_SelectedSprite";
@@ -21,11 +22,14 @@ namespace UnityEditor.UI
         {
             Rect drawRect = rect;
             drawRect.height = EditorGUIUtility.singleLineHeight;
+            SerializedProperty normalSprite = prop.FindPropertyRelative(kNormalSprite); 
             SerializedProperty highlightedSprite = prop.FindPropertyRelative(kHighlightedSprite);
             SerializedProperty pressedSprite = prop.FindPropertyRelative(kPressedSprite);
             SerializedProperty selectedSprite = prop.FindPropertyRelative(kSelectedSprite);
             SerializedProperty disabledSprite = prop.FindPropertyRelative(kDisabledSprite);
 
+            EditorGUI.PropertyField(drawRect, normalSprite);
+            drawRect.y += EditorGUIUtility.singleLineHeight + EditorGUIUtility.standardVerticalSpacing;
             EditorGUI.PropertyField(drawRect, highlightedSprite);
             drawRect.y += EditorGUIUtility.singleLineHeight + EditorGUIUtility.standardVerticalSpacing;
             EditorGUI.PropertyField(drawRect, pressedSprite);
@@ -38,7 +42,7 @@ namespace UnityEditor.UI
 
         public override float GetPropertyHeight(SerializedProperty prop, GUIContent label)
         {
-            return 4 * EditorGUIUtility.singleLineHeight + 3 * EditorGUIUtility.standardVerticalSpacing;
+            return 5 * EditorGUIUtility.singleLineHeight + 4 * EditorGUIUtility.standardVerticalSpacing;
         }
 
         public override VisualElement CreatePropertyGUI(SerializedProperty property)
@@ -48,6 +52,7 @@ namespace UnityEditor.UI
 
             var properties = new[]
             {
+                property.FindPropertyRelative(kNormalSprite),
                 property.FindPropertyRelative(kHighlightedSprite),
                 property.FindPropertyRelative(kPressedSprite),
                 property.FindPropertyRelative(kSelectedSprite),
